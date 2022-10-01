@@ -1,6 +1,6 @@
-import { Router } from 'express';
-import authRouter from './authRouter';
-import barChartRouter from './barCartRouter';
+import { Router } from "express";
+import authRouter from "./authRouter";
+import barChartRouter from "./barCartRouter";
 
 
 
