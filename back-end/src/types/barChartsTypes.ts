@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 
-export interface BarChartData{
+export interface IBarChartData{
 id: ObjectId
 userId:ObjectId
 type: string
@@ -11,4 +11,5 @@ columnColors:Array<string>
 columnValues:Array<number>
 }
 
-export type CreateBarChartData = Omit<BarChartData, "id">
+export type TBarChartCreateData = Omit<IBarChartData, "id">
+export type TBarChartInputData = Omit<IBarChartData, "id" | "userId">

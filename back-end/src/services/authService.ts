@@ -1,26 +1,26 @@
 import { findByEmail} from "../repositories/usersRepository";
-import { LogUserData } from "../types/usersTypes";
-import bcrypt from 'bcrypt'
+import { TLogUserData } from "../types/usersTypes";
+import bcrypt from "bcrypt";
 import  jwt  from "jsonwebtoken";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-export async function login(userData: LogUserData){
+export async function login(userData: TLogUserData){
 
-  const user = await findByEmail(userData.email)
-	if(!user) throw {type: 'unauthorized', message: 'invalid user or password'}
+  const user = await findByEmail(userData.email);
+  if(!user) throw {type: "unauthorized", message: "invalid user or password"};
 
   const correctPassword = bcrypt.compareSync(userData.password, user.password);
-  if(!correctPassword) throw {type: 'unauthorized', message: 'invalid user or password'}
+  if(!correctPassword) throw {type: "unauthorized", message: "invalid user or password"};
 
-  const SECRET: string = process.env.TOKEN_SECRET_KEY ?? '';
+  const SECRET: string = process.env.TOKEN_SECRET_KEY ?? "";
   const EXPIRES_IN = process.env.TOKEN_EXPIRES_IN;
-
+  
   const payload = {
-    id: user.id
+    userId: user._id
   };
-
+  console.log("payload do login", payload);
   const jwtConfig = {
     expiresIn: EXPIRES_IN
   };

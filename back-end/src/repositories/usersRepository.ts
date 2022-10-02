@@ -1,8 +1,8 @@
 import  {db}  from "../database/db";
-import {LogUserData} from "../types/usersTypes";
+import {TLogUserData} from "../types/usersTypes";
 
 
-export async function insert(userData: LogUserData) {
+export async function insert(userData: TLogUserData) {
   const user = await db.collection("users").insertOne({
     email:userData.email,
     password:userData.password

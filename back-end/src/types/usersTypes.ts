@@ -1,11 +1,11 @@
 import { ObjectId } from "mongodb";
 
 
-export interface UserData {
+export interface IUserData {
     id:ObjectId
     email:string
     password:string
 }
-export type LogUserData = Omit<UserData, "id" | "confirmPassword">
+export type TLogUserData = Omit<IUserData, "id" | "confirmPassword">
 
-export type CreateUserData = Omit<UserData, "id"> & {confirmPassword: string }
+export type TCreateUserData = Omit<IUserData, "id"> & {confirmPassword: string }
