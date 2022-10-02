@@ -1,5 +1,5 @@
 import { IBarChartData, TBarChartCreateData, TBarChartInputData } from "../types/barChartsTypes";
-import { insert, findById } from "../repositories/barChartsRepository";
+import { insert, findById, findByUserId } from "../repositories/barChartsRepository";
 import { ObjectId } from "mongodb";
 
 
@@ -34,6 +34,16 @@ export async function findBarChartByIdService(barChartId:ObjectId, userId:Object
       message: "the bar chart you are trying to acsses belongs to another user"};
 
   return barChart;
+}
+
+export async function findBarChartsByUserIdService(userId:ObjectId){
+  
+  const barCharts:IBarChartData = await findByUserId(userId);
+  if(!barCharts)
+    throw {type: "not_found",
+      message: "bar charts associated with the provided id could not be found"};
+
+  return barCharts;
 }
   
   

@@ -17,7 +17,6 @@ export async function verifyToken(req:Request, res:Response, next:NextFunction) 
 
   try {
     const {userId} = jwt.verify(token,SECRET) as {userId:ObjectId};
-    console.log("userId do verifytoken",userId);
     res.locals.id = userId;
     return next();
   } catch {

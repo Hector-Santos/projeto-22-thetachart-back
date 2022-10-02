@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import {TBarChartInputData} from "../types/barChartsTypes";
-import { createBarChartService, findBarChartByIdService } from "../services/barChartsService";
+import { createBarChartService, findBarChartByIdService, findBarChartsByUserIdService } from "../services/barChartsService";
 import { ObjectId } from "mongodb";
 
 
@@ -16,5 +16,11 @@ export async function findBarChartById(req:Request, res:Response) {
   const barChartId:ObjectId = new ObjectId(req.params.id);
   const userId:ObjectId = res.locals.id;
   const barChart = await findBarChartByIdService(barChartId, userId);
+  res.status(200).send(barChart);
+}
+
+export async function findBarChartsByUserId(req:Request, res:Response) {
+  const userId:ObjectId = res.locals.id;
+  const barChart = await findBarChartsByUserIdService(userId);
   res.status(200).send(barChart);
 }

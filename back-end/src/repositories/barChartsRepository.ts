@@ -23,8 +23,13 @@ export async function findById(id:ObjectId) {
     _id :id
   }
   );
-  console.log(barchart);
-  return barchart;
-  
+  return barchart; 
 }
 
+export async function findByUserId(userId:ObjectId) {
+  const barcharts = await db.collection("barcharts").find({
+    userId: userId
+  }
+  ).toArray();
+  return barcharts;
+}
