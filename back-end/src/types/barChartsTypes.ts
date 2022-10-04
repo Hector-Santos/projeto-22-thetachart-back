@@ -3,7 +3,6 @@ import { ObjectId } from "mongodb";
 export interface IBarChartData{
 id: ObjectId
 userId:ObjectId
-type: string
 title: string
 columnNumber: number
 columnNames: Array<string>

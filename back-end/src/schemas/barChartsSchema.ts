@@ -2,7 +2,6 @@ import Joi from "joi";
 
 
 export const barChartSchema = Joi.object({
-  type: Joi.string().valid("pie", "bar", "line").required(),
   title: Joi.string().required(),
   columnNumber: Joi.number().min(1).max(20).required(),
   columnNames: Joi.array().items(Joi.string())

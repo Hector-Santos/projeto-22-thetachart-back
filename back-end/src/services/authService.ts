@@ -20,7 +20,6 @@ export async function login(userData: TLogUserData){
   const payload = {
     userId: user._id
   };
-  console.log("payload do login", payload);
   const jwtConfig = {
     expiresIn: EXPIRES_IN
   };
