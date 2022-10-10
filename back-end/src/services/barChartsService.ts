@@ -1,6 +1,8 @@
 import { TBarChartCreateData, TBarChartInputData } from "../types/barChartsTypes";
 import { insert, findById, findByUserId } from "../repositories/barChartsRepository";
 import { ObjectId } from "mongodb";
+import { barChartFactoryPreset } from "../../tests/factories/barChartFactory";
+import { faker } from "@faker-js/faker";
 
 
 
@@ -45,5 +47,10 @@ export async function findBarChartsByUserIdService(userId:ObjectId){
   return barCharts;
 }
   
-  
+export async function createRandomBarChartService(){
+   
+  const barChart = barChartFactoryPreset(faker.datatype.number({min:3, max:6}));
+
+  return barChart;
+}
  
